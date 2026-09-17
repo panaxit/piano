@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- hits fija la cantidad de golpes de ese acorde; si se omite, usa el ajuste de la app. -->
+<piano-song version="1" id="en-marcha-estoy" title="En marcha estoy" artist="Tierra de Osos" tempo="108" meter="4/4" key="C">
+  <phrases>
+    <phrase id="intro-1" label="Inicio · frase 1"><chord symbol="C" beats="4"/><chord symbol="Bb" beats="4"/><chord symbol="Am" beats="4"/><chord symbol="G" beats="4"/></phrase>
+    <phrase id="intro-2" label="Inicio · frase 2"><chord symbol="F" beats="4"/><chord symbol="C" beats="2" hits="1"/><chord symbol="G" beats="2" hits="1"/><chord symbol="Bb" beats="4"/><chord symbol="G" beats="4"/></phrase>
+    <phrase id="verse-1" label="Inicio · frase 3"><chord symbol="C" beats="4"/><chord symbol="Bb" beats="4"/><chord symbol="Am" beats="4"/><chord symbol="G" beats="4"/></phrase>
+    <phrase id="verse-2" label="Inicio · frase 4"><chord symbol="F" beats="4"/><chord symbol="C" beats="2" hits="1"/><chord symbol="G" beats="2" hits="1"/><chord symbol="Bb" beats="4"/><chord symbol="G" beats="4"/></phrase>
+    <phrase id="bridge-1" label="Desarrollo · frase 1"><chord symbol="Eb" beats="4"/><chord symbol="Cm" beats="4"/><chord symbol="Ab" beats="4"/><chord symbol="Bbsus2" beats="2" hits="1"/><chord symbol="Bb" beats="2" hits="1"/></phrase>
+    <phrase id="bridge-2" label="Desarrollo · frase 2"><chord symbol="Cm" beats="4"/><chord symbol="Gm" beats="4"/><chord symbol="Ab" beats="4"/><chord symbol="Bb" beats="2" hits="1"/><chord symbol="C" beats="2" hits="1"/></phrase>
+    <phrase id="chorus-1" label="Desarrollo · frase 3"><chord symbol="Bb" beats="4"/><chord symbol="Am" beats="4"/><chord symbol="G" beats="4"/></phrase>
+    <phrase id="chorus-2" label="Desarrollo · frase 4"><chord symbol="F" beats="4"/><chord symbol="C" beats="2" hits="1"/><chord symbol="G" beats="2" hits="1"/><chord symbol="Bb" beats="4"/><chord symbol="G" beats="4"/></phrase>
+    <phrase id="bridge-repeat-1" label="Desarrollo · frase 5"><chord symbol="Eb" beats="4"/><chord symbol="Cm" beats="4"/><chord symbol="Ab" beats="4"/><chord symbol="Bbsus2" beats="2" hits="1"/><chord symbol="Bb" beats="2" hits="1"/></phrase>
+    <phrase id="bridge-repeat-2" label="Desarrollo · frase 6"><chord symbol="Cm" beats="4"/><chord symbol="Gm" beats="4"/><chord symbol="Ab" beats="4"/><chord symbol="Bb" beats="2" hits="1"/><chord symbol="G" beats="2" hits="1"/></phrase>
+    <phrase id="transition" label="Desarrollo · frase 7"><chord symbol="Bm" beats="2"/><chord symbol="Em" beats="2"/><chord symbol="C" beats="2"/><chord symbol="G" beats="2"/><chord symbol="Bm" beats="2"/><chord symbol="D" beats="4"/></phrase>
+    <phrase id="key-change-1" label="Interludio · frase 1"><chord symbol="A" beats="4"/><chord symbol="C#m" beats="4"/><chord symbol="F#m" beats="4"/><chord symbol="D" beats="4"/></phrase>
+    <phrase id="key-change-2" label="Interludio · frase 2"><chord symbol="A" beats="4"/><chord symbol="C#m" beats="4"/><chord symbol="F#m" beats="4"/><chord symbol="D" beats="4"/></phrase>
+    <phrase id="key-change-3" label="Interludio · frase 3"><chord symbol="A" beats="4"/><chord symbol="C#m" beats="4"/><chord symbol="F#m" beats="4"/><chord symbol="G" beats="2" hits="1"/><chord symbol="A" beats="2" hits="1"/></phrase>
+    <phrase id="key-change-4" label="Interludio · frase 4"><chord symbol="D" beats="4"/><chord symbol="C" beats="4"/><chord symbol="Bm" beats="4"/><chord symbol="A" beats="2" hits="1"/><chord symbol="A" beats="2" hits="1"/></phrase>
+    <phrase id="outro-1" label="Final · frase 1"><chord symbol="D" beats="4"/><chord symbol="C" beats="4"/><chord symbol="Bm" beats="4"/><chord symbol="A" beats="4"/></phrase>
+    <phrase id="outro-2" label="Final · frase 2"><chord symbol="G" beats="4"/><chord symbol="D" beats="2" hits="1"/><chord symbol="A" beats="2" hits="1"/><chord symbol="C" beats="4"/><chord symbol="A" beats="4"/></phrase>
+    <phrase id="outro-3" label="Final · frase 3"><chord symbol="D" beats="4"/><chord symbol="C" beats="4"/><chord symbol="Bm" beats="4"/><chord symbol="A" beats="4"/></phrase>
+    <phrase id="outro-4" label="Final · frase 4"><chord symbol="G" beats="4"/><chord symbol="D" beats="2" hits="1"/><chord symbol="A" beats="2" hits="1"/><chord symbol="C" beats="4"/><chord symbol="A" beats="4"/></phrase>
+    <phrase id="ending" label="Final · cierre"><chord symbol="D" beats="8"/></phrase>
+  </phrases>
+  <!-- Opcional: notas de melodía en MIDI; start y beats se miden en pulsos. -->
+  <melody />
+</piano-song>
