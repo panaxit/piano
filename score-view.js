@@ -5,7 +5,7 @@ function scorePitch(midi) {
   const octave = Math.floor(midi / 12) - 5;
   return pitches[midi % 12] + (octave < 0 ? ','.repeat(-octave) : "'".repeat(octave));
 }
-function staffBar(bar, hand) {
+function staffBar(bar, hand, segments) {
   const start = Math.round(bar.start * scoreTicks);
   const end = Math.round((bar.start + bar.d) * scoreTicks);
   const tones = events.filter(e => e.hand === hand && e.b < bar.start + bar.d && e.b + e.d > bar.start)
@@ -23,6 +23,7 @@ function staffBar(bar, hand) {
       abc += '(3'; triplets=3;
     }
     const sounding=tones.filter(t=>t.from<=at && t.to>at);
+    if (sounding.length) segments.push({start:at/scoreTicks,end:next/scoreTicks,hand});
     const duration=(triplets ? length*1.5 : length) + '/48';
     if (!sounding.length) abc+='z'+duration;
     else if(sounding.length===1) abc+=scorePitch(sounding[0].n)+duration+(sounding[0].to>next?'-':'');
@@ -33,7 +34,16 @@ function staffBar(bar, hand) {
   return abc+'|';
 }
 let scoreViewKey='';
-function displayScore(index) {
+let scoreNotes = [];
+function highlightScore(beat) {
+  for (const note of scoreNotes) {
+    const active = playing && beat >= note.start && beat < note.end;
+    if (active === note.active) continue;
+    note.active = active;
+    note.group.classList.toggle('sounding-' + note.hand, active);
+  }
+}
+function displayScore(index, beat=current()) {
   const panel=document.getElementById('scorePanel');
   if(!panel.open || !chords.length) return;
   const bars=chords.filter(bar=>bar.row===chords[index].row);
@@ -41,11 +51,20 @@ function displayScore(index) {
   const first=Math.floor(offset/2)*2;
   const visible=bars.slice(first,first+2);
   const key=[visible[0].start,transpose,$('hands').value].join('/');
-  if(scoreViewKey===key)return;
+  if(scoreViewKey===key){highlightScore(beat);return;}
   scoreViewKey=key;
   $('scoreCaption').textContent=phrases[chords[index].row].label+' · '+visible.map(bar=>chordLabel(bar.c)).join(' / ');
   const hands=['right','left'].filter(handEnabled);
+  const segments = {left:[], right:[]};
   const abc=['X:1','M:'+(songMeta.meter||'4/4'),'L:1/8',hands.length===2?'%%score {right left}':'','K:C',
-    ...hands.flatMap(hand=>['V:'+hand+' clef='+(hand==='left'?'bass':'treble'),visible.map(bar=>staffBar(bar,hand)).join(' ')])].join('\n');
-  ABCJS.renderAbc('staffView',abc,{responsive:'resize',staffwidth:560,paddingtop:8,paddingbottom:8});
+    ...hands.flatMap(hand=>['V:'+hand+' clef='+(hand==='left'?'bass':'treble'),visible.map(bar=>staffBar(bar,hand,segments[hand])).join(' ')])].join('\n');
+  ABCJS.renderAbc('staffView',abc,{add_classes:true,responsive:'resize',staffwidth:560,paddingtop:8,paddingbottom:8});
+  scoreNotes = [];
+  hands.forEach((hand, voice) => {
+    const groups = $('staffView').querySelectorAll('.abcjs-note.abcjs-v' + voice);
+    segments[hand].forEach((segment, i) => {
+      if (groups[i]) scoreNotes.push({...segment, group:groups[i], active:false});
+    });
+  });
+  highlightScore(beat);
 }
